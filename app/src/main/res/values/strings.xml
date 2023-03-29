@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Marking</string>
+    <string name="marking">Baholash</string>
+    <string name="import_">Yuklash</string>
+    <string name="exit">Chiqish</string>
+    <string name="error_occurred">Xatolik yuz berdi</string>
+</resources>
