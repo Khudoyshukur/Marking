@@ -42,7 +42,7 @@ class MarksAdapter(
     class ViewHolder(val textView: MaterialButton) : RecyclerView.ViewHolder(textView) {
         fun bind(model: Mark) {
             textView.setBackgroundColor(model.color)
-            textView.text = model.mark.toString()
+            textView.text = model.actualMark.toString()
         }
     }
 }

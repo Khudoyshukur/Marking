@@ -2,7 +2,6 @@ package com.example.marking
 
 import android.graphics.Color
 import androidx.recyclerview.widget.DiffUtil
-import kotlin.random.Random
 
 /**
  * Created by: androdev
@@ -10,8 +9,6 @@ import kotlin.random.Random
  * Time: 2:33 PM
  * Email: Khudoyshukur.Juraev.001@mail.ru
  */
-
-private val random = Random(0)
 
 data class DataModel(
     val number: Int,
@@ -50,30 +47,36 @@ data class SubjectMark(
 
 sealed interface Mark {
     val color: Int
+    val actualMark: Float
     val mark: Int
 
     data class One(
         override val color: Int = Color.RED,
+        override val actualMark: Float = 22f,
         override val mark: Int = 1
     ) : Mark
 
     data class Two(
         override val color: Int = Color.MAGENTA,
+        override val actualMark: Float = 28f,
         override val mark: Int = 2
     ) : Mark
 
     data class Three(
         override val color: Int = Color.BLUE,
+        override val actualMark: Float = 34f,
         override val mark: Int = 3
     ) : Mark
 
     data class Four(
         override val color: Int = Color.LTGRAY,
+        override val actualMark: Float = 42f,
         override val mark: Int = 4
     ) : Mark
 
     data class Five(
         override val color: Int = Color.GREEN,
+        override val actualMark: Float = 53f,
         override val mark: Int = 5
     ) : Mark
 

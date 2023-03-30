@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marking.databinding.ItemBarcharMarkBinding
 import com.google.android.material.button.MaterialButton
+import kotlin.math.roundToInt
 
 /**
  * Created by: androdev
@@ -38,11 +39,10 @@ class BarchartMarksAdapter(
     class ViewHolder(val binding: ItemBarcharMarkBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(model: Mark) {
             binding.btnMark.setBackgroundColor(model.color)
-            binding.btnMark.text = model.mark.toString()
 
             binding.btnMark.layoutParams = LinearLayout.LayoutParams(
                 binding.root.context.dpToPx(40),
-                model.mark * binding.root.context.dpToPx(40)
+                ((model.actualMark / 22f) * binding.root.context.dpToPx(40)).roundToInt()
             ).also { it.gravity = Gravity.BOTTOM }
         }
     }

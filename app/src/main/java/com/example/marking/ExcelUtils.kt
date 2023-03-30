@@ -24,7 +24,7 @@ object ExcelUtils {
                 val subjectMarks = arrayListOf<SubjectMark>()
                 for (index in 2 until currentRow.lastCellNum) {
                     val subjectName = sheet.getRow(0).getCell(index).stringCellValue
-                    val subjectMark = currentRow.getCell(index).numericCellValue.toInt()
+                    val subjectMark = currentRow.getCell(index).numericCellValue.toFloat()
                     subjectMarks.add(SubjectMark(subjectName, subjectMark.toMark()))
                 }
 
@@ -41,12 +41,11 @@ object ExcelUtils {
         }
     }
 
-    private fun Int.toMark() = when (this) {
-        1 -> Mark.One()
-        2 -> Mark.Two()
-        3 -> Mark.Three()
-        4 -> Mark.Four()
-        5 -> Mark.Five()
-        else -> throw IllegalArgumentException("Unknown mark")
+    private fun Float.toMark() = when {
+        this <= 22f -> Mark.One()
+        this in 23f..28f -> Mark.Two()
+        this in 29f..41f -> Mark.Three()
+        this in 42f..52f -> Mark.Four()
+        else -> Mark.Five()
     }
 }

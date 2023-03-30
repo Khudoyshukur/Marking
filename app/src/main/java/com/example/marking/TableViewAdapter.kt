@@ -40,9 +40,9 @@ class TableViewAdapter(
             binding.tvName.text = model.studentName
 
             val adapter = MarksAdapter(
-                binding.root.context.dpToPx(40),
-                binding.root.context.dpToPx(40),
-                onItemClicked = { button, index, mark ->
+                width = RecyclerView.LayoutParams.WRAP_CONTENT,
+                height = RecyclerView.LayoutParams.WRAP_CONTENT,
+                onItemClicked = { button, index, _ ->
                     val subjectMark = model.subjectMarks.getOrNull(index)
 
                     val toolTip = ToolTip.Builder(
