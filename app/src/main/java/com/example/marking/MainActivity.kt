@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = MarksAdapter(
             width = RecyclerView.LayoutParams.MATCH_PARENT,
             height = dpToPx(50),
+            writeRange = true,
             onItemClicked = null
         ).also { it.submitList(marks) }
         rvMarks.layoutManager = manager

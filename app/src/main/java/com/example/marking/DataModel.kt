@@ -1,6 +1,7 @@
 package com.example.marking
 
 import android.graphics.Color
+import android.util.Range
 import androidx.recyclerview.widget.DiffUtil
 
 /**
@@ -48,36 +49,36 @@ data class SubjectMark(
 sealed interface Mark {
     val color: Int
     val actualMark: Float
-    val mark: Int
+    val markRange: Range<Int>
 
     data class One(
         override val color: Int = Color.RED,
         override val actualMark: Float = 22f,
-        override val mark: Int = 1
+        override val markRange: Range<Int> = Range(1, 22)
     ) : Mark
 
     data class Two(
         override val color: Int = Color.MAGENTA,
         override val actualMark: Float = 28f,
-        override val mark: Int = 2
+        override val markRange: Range<Int> = Range(23, 28)
     ) : Mark
 
     data class Three(
         override val color: Int = Color.BLUE,
         override val actualMark: Float = 34f,
-        override val mark: Int = 3
+        override val markRange: Range<Int> = Range(29, 34)
     ) : Mark
 
     data class Four(
         override val color: Int = Color.LTGRAY,
         override val actualMark: Float = 42f,
-        override val mark: Int = 4
+        override val markRange: Range<Int> = Range(35, 42)
     ) : Mark
 
     data class Five(
         override val color: Int = Color.GREEN,
         override val actualMark: Float = 53f,
-        override val mark: Int = 5
+        override val markRange: Range<Int> = Range(43, Int.MAX_VALUE)
     ) : Mark
 
     companion object {
