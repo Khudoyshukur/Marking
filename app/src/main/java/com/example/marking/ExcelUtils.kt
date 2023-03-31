@@ -1,5 +1,6 @@
 package com.example.marking
 
+import org.apache.poi.ss.usermodel.DataFormatter
 import org.apache.poi.ss.usermodel.WorkbookFactory
 import java.io.InputStream
 
@@ -15,16 +16,19 @@ object ExcelUtils {
         val xlWb = WorkbookFactory.create(excelInputStream)
         val sheet = xlWb.getSheetAt(0)
 
+        val dataFormatter = DataFormatter()
+
         var isFirst = true
         sheet.rowIterator().forEach { currentRow ->
             if (!isFirst) {
-                val number = currentRow.getCell(0).numericCellValue.toInt()
-                val studentName = currentRow.getCell(1).stringCellValue
+                val number = dataFormatter.formatCellValue(currentRow.getCell(0)).toInt()
+                val studentName = dataFormatter.formatCellValue(currentRow.getCell(1)) ?: ""
 
                 val subjectMarks = arrayListOf<SubjectMark>()
                 for (index in 2 until currentRow.lastCellNum) {
-                    val subjectName = sheet.getRow(0).getCell(index).stringCellValue
-                    val subjectMark = currentRow.getCell(index).numericCellValue.toFloat()
+                    val subjectName =
+                        dataFormatter.formatCellValue(sheet.getRow(0).getCell(index)) ?: ""
+                    val subjectMark = dataFormatter.formatCellValue(currentRow.getCell(index)).toFloat()
                     subjectMarks.add(SubjectMark(subjectName, subjectMark.toMark()))
                 }
 
