@@ -28,7 +28,7 @@ object ExcelUtils {
                 for (index in 2 until currentRow.lastCellNum) {
                     val subjectName =
                         dataFormatter.formatCellValue(sheet.getRow(0).getCell(index)) ?: ""
-                    val subjectMark = dataFormatter.formatCellValue(currentRow.getCell(index)).toFloat()
+                    val subjectMark = currentRow.getCell(index).numericCellValue.toFloat()
                     subjectMarks.add(SubjectMark(subjectName, subjectMark.toMark()))
                 }
 
