@@ -15,13 +15,14 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:ellipsize="end"
@@ -30,7 +31,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/rv_marks"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/tv_number"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Xudoyshukur" />
@@ -39,6 +40,7 @@
         android:id="@+id/rv_marks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +49,7 @@
         app:layout_constraintStart_toEndOf="@id/tv_name"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="1"
-        tools:itemCount="5" />
+        tools:itemCount="10"
+        tools:listitem="@layout/item_barchar_mark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

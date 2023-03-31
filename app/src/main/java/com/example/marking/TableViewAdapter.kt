@@ -30,6 +30,13 @@ class TableViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = getItem(position) ?: return
         holder.bind(model, tooltipContainer, toolTipsManager)
+
+        val lp = holder.itemView.layoutParams as? RecyclerView.LayoutParams
+        lp?.let {
+            holder.itemView.layoutParams = it.apply {
+                it.width = RecyclerView.LayoutParams.MATCH_PARENT
+            }
+        }
     }
 
     class ViewHolder(private val binding: ItemTableStudentBinding) :

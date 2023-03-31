@@ -111,6 +111,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun processFile(uri: Uri) {
+        try {
+            currentFocus?.clearFocus()
+        } catch (e: Exception) {
+            // ignore
+        }
+
         lifecycleScope.launch(Dispatchers.IO) {
             processingFileStream.emit(true)
             try {
