@@ -46,10 +46,20 @@ object ExcelUtils {
     }
 
     private fun Float.toMark() = when {
-        this <= 22f -> Mark.One()
-        this in 23f..28f -> Mark.Two()
-        this in 29f..41f -> Mark.Three()
-        this in 42f..52f -> Mark.Four()
-        else -> Mark.Five()
+        this <= 22f -> Mark.One(
+            actualMark = this
+        )
+        this in 23f..28f -> Mark.Two(
+            actualMark = this
+        )
+        this in 29f..41f -> Mark.Three(
+            actualMark = this
+        )
+        this in 42f..52f -> Mark.Four(
+            actualMark = this
+        )
+        else -> Mark.Five(
+            actualMark = this
+        )
     }
 }
